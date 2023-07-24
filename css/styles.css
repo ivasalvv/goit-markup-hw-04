@@ -103,6 +103,7 @@ img {
   color: var(--headers-color);
   font-weight: 500;
   letter-spacing: 0.02em;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-list .current {
@@ -110,14 +111,15 @@ img {
   position: relative;
 }
 
-.header-list .current::after {
+.current::after {
   content: '';
+  display: block;
   position: absolute;
-  top: 44px;
-  right: 0;
+  bottom: -1.5px;
+  left: 0;
   width: 100%;
   height: 4px;
-  color: var(--button-hover-color);
+  background-color: var(--button-hover-color);
   border-radius: 2px;
 }
 
@@ -125,6 +127,7 @@ img {
   color: var(--description-contacts-color);
   font-weight: 400;
   letter-spacing: 0.02em;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-list a:hover,
@@ -227,6 +230,7 @@ img {
   display: flex;
   width: 100%;
   height: 100%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .foot-net-network:hover,
@@ -275,6 +279,7 @@ img {
   border-radius: 4px;
   border: 0;
   min-width: 169px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -420,6 +425,7 @@ img {
   border-radius: 50%;
   padding: 12px;
   display: flex;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-link:hover,
@@ -456,6 +462,8 @@ img {
   gap: 24px;
   padding: 16px 32px;
   border-radius: 4px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .custom-link:hover,
@@ -465,6 +473,7 @@ img {
 
 .customers-icon {
   fill: currentColor;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .custom-link:hover .customers-icon,
@@ -501,14 +510,21 @@ img {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 12px 24px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filters ul .button:hover,
 .filters ul .button:focus {
   background-color: var(--button-hover-color);
   color: var(--background-color);
-  border-radius: 4px;
   border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
+    0px 2px 1px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-titles {
@@ -540,4 +556,95 @@ img {
 
 .port-el {
   width: calc((100% - 48px) / 3);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.port-el:hover,
+.port-el:focus {
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.overlay {
+  width: 100%;
+  height: 300px;
+  background-color: var(--logo-button-color);
+  flex-shrink: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(421px);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay-par {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  padding: 40px 32px 164px;
+  color: var(--footer-color);
+}
+
+.port-el:hover .overlay {
+  transform: translateY(0%);
+}
+
+/*Modal window*/
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 47, 66, 0.4);
+  transition: opacity 300ms ease-in, visibility 300ms ease-in;
+}
+
+.modal {
+  position: absolute;
+  width: 408px;
+  height: 584px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  transition: transform 300ms ease-in, opacity 300ms ease-in;
+  background-color: #fcfcfc;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+}
+
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}
+
+.modal-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-color: var(--border-color);
+  border: 1px solid rgba(0, 0, 0, 0.102);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
