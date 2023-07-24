@@ -467,11 +467,6 @@ img {
   gap: 24px;
 }
 
-.custom-li {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .custom-link {
   color: var(--customers-color);
   border: 1px solid var(--customers-color);
@@ -483,11 +478,14 @@ img {
   gap: 24px;
   padding: 16px 32px;
   border-radius: 4px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .custom-link:hover,
 .custom-link:focus {
   border-color: var(--button-hover-color);
+  color: var(--button-hover-color);
 }
 
 .customers-icon {
@@ -496,7 +494,7 @@ img {
 
 .custom-link:hover .customers-icon,
 .custom-link:focus .customers-icon {
-  color: var(--button-hover-color);
+  fill: var(--button-hover-color);
 }
 
 .filters ul .button {
